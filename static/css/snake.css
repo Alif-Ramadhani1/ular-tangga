@@ -1,0 +1,237 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('/static/img/background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    font-size: 14px;
+    padding-top: 60px; /* Add this line to create space for the fixed navbar */
+}
+
+/* Navbar styles */
+header {
+    background-color: #333;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #007bff;
+}
+
+#game-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto 1fr auto auto;
+    gap: 20px;
+    width: 100%;
+    height: calc(100vh - 60px); /* Adjust this line to account for the navbar height */
+    max-width: 1200px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#player1-info {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+}
+
+#player2-info {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+}
+
+#board-container {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+}
+
+#board {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #333;
+    background-color: #fff;
+    position: relative;
+}
+
+#controls {
+    grid-column: 2;
+    grid-row: 3;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-top: 120px;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+#dice-container {
+    grid-column: 2;
+    grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#dice {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+button, input {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+input {
+    background-color: white;
+    color: black;
+    border: 1px solid #007bff;
+}
+
+p {
+    margin: 10px;
+    font-size: 18px;
+}
+
+#character-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.character-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.character-options img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 50%;
+}
+
+.character-options img.selected {
+    border-color: #007bff;
+}
+
+@media (max-width: 768px) {
+    #game-container {
+        height: auto;
+    }
+
+    #board-container {
+        width: 90%;
+    }
+
+    #controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .player-info {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+#player1-info, #player2-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes movePlayer {
+    0% { transform: scale(1) translateY(0); }
+    50% { transform: scale(1.1) translateY(-5px); }
+    100% { transform: scale(1) translateY(0); }
+}
+
+.player {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.player.moving {
+    animation: movePlayer 0.5s ease;
+}
+
+#dice-container {
+    grid-column: 2;
+    grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#dice {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permainan Ular Tangga</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/snake.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Beranda</a></li>
+                <li><a href="{{ url_for('profile') }}">Profil</a></li>
+                <li><a href="{{ url_for('snake_game') }}">Permainan Ular Tangga</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="game-container">
+        <div id="player1-info" class="player-info">
+            <input type="text" id="player1-name" placeholder="Nama Pemain 1">
+            <p id="player1-position">Posisi Pemain 1: 1</p>
+            <div id="player1-characters" class="character-options">
+                <img src="/static/img/char/char1.png" data-char="char1" alt="Karakter 1">
+                <img src="/static/img/char/char2.png" data-char="char2" alt="Karakter 2">
+                <img src="/static/img/char/char3.png" data-char="char3" alt="Karakter 3">
+                <img src="/static/img/char/char4.png" data-char="char4" alt="Karakter 4">
+                <img src="/static/img/char/char5.png" data-char="char5" alt="Karakter 5">
+                <img src="/static/img/char/char6.png" data-char="char6" alt="Karakter 6">
+            </div>
+        </div>
+        
+        <div id="board-container">
+            <canvas id="board"></canvas>
+        </div>
+        
+        <div id="player2-info" class="player-info">
+            <input type="text" id="player2-name" placeholder="Nama Pemain 2">
+            <p id="player2-position">Posisi Pemain 2: 1</p>
+            <div id="player2-characters" class="character-options">
+                <img src="/static/img/char/char1.png" data-char="char1" alt="Karakter 1">
+                <img src="/static/img/char/char2.png" data-char="char2" alt="Karakter 2">
+                <img src="/static/img/char/char3.png" data-char="char3" alt="Karakter 3">
+                <img src="/static/img/char/char4.png" data-char="char4" alt="Karakter 4">
+                <img src="/static/img/char/char5.png" data-char="char5" alt="Karakter 5">
+                <img src="/static/img/char/char6.png" data-char="char6" alt="Karakter 6">
+            </div>
+        </div>
+        
+        <div id="dice-container">
+            <img id="dice" src="{{ url_for('static', filename='img/dice/dice1.png') }}" alt="Dadu">
+        </div>
+        
+        <div id="controls">
+            <button id="start-game">Mulai Permainan</button>
+            <button id="roll-dice" disabled>Lempar Dadu</button>
+            <button id="regenerate-board">Regenerasi Papan</button>
+        </div>
+    </div>
+    <script id="snakes-data" type="application/json">{{ snakes | safe }}</script>
+    <script id="ladders-data" type="application/json">{{ ladders | safe }}</script>
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>
